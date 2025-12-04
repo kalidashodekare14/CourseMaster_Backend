@@ -3,6 +3,7 @@ import cors from 'cors';
 const app = express();
 import { authRoutes } from './modules/auth/routes';
 import { adminRoutes } from './modules/admin_portal/routes';
+import { studentRoutes } from './modules/student_portal/routes';
 
 app.use(cors({
     origin: "*",
@@ -24,6 +25,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/admin', adminRoutes);
+app.use('/api/v1/student', studentRoutes);
 
 
 export default app;
