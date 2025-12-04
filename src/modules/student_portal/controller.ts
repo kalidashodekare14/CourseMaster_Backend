@@ -11,3 +11,13 @@ export const studentCourseContentController = async (req: Request, res: Response
         data: result
     })
 }
+
+export const getEnrolledCoursesController = async (req: Request, res: Response) => {
+    const { studentId } = req.params;
+    const result = await studentService.getEnrolledCourses(studentId);
+    sendsendResponse(res, {
+        success: true,
+        message: "Enrolled courses fetched successfully",
+        data: result
+    })
+}

@@ -34,5 +34,24 @@ export const studentService = {
             modules: modulesWithLessons
         }
 
+    },
+    getEnrolledCourses: async (studentId: any) => {
+        const enrollments = await Enrolled.find({ studentId })
+            .populate({
+                path: 'courseId',
+                select: 'title description thumbnailUrl price',
+            })
+            .populate({
+                path: 'batchId',
+                select: 'batchName startDate endDate',
+            })
+            .lean();
+        console.log("Enrollments:", enrollments);
+        if (!enrollments || enrollments.length === 0) {
+            throw new Error('No enrollments found for the given student.');
+        }
+
+        return enrollments;
+
     }
 }
