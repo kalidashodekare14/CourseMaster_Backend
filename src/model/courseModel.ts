@@ -1,6 +1,6 @@
 import { model, Schema } from 'mongoose';
 
-interface ICourse {
+export interface ICourse {
     title: string;
     description: string;
     thumbnailUrl: string;
